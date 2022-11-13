@@ -20,6 +20,15 @@ class WeeklyActivity : AppCompatActivity(), CalendarAdapter.OnItemListener {
         setWeekView()
     }
 
+    override fun onResume() {
+        super.onResume()
+        setEventAdapter()
+    }
+
+    fun setEventAdapter() {
+
+    }
+
     private fun setWeekView() {
         binding.monthYearTV.text = CalendarUtils.monthYearFromDate(CalendarUtils.selectedDate!!)
 
@@ -44,6 +53,7 @@ class WeeklyActivity : AppCompatActivity(), CalendarAdapter.OnItemListener {
 
     private fun initWidgets() {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate?.plusWeeks(1)
+        setEventAdapter()
     }
 
     override fun onItemClick(position: Int, date: LocalDate?) {

@@ -2,6 +2,7 @@ package com.example.calendar
 
 import java.time.DayOfWeek
 import java.time.LocalDate
+import java.time.LocalTime
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 
@@ -10,6 +11,16 @@ class CalendarUtils {
     companion object {
 
         var selectedDate: LocalDate? = null
+
+        fun formattedDate(date: LocalDate): String {
+            val formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy")
+            return date.format(formatter)
+        }
+
+        fun formattedTime(time: LocalTime): String {
+            val formatter = DateTimeFormatter.ofPattern("hh:mm:ss a")
+            return time.format(formatter)
+        }
 
         fun monthYearFromDate(date: LocalDate): String {
             val formatter = DateTimeFormatter.ofPattern("MMMM yyyy")
