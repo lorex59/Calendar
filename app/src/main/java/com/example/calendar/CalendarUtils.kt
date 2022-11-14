@@ -22,8 +22,18 @@ class CalendarUtils {
             return time.format(formatter)
         }
 
+        fun formattedShortTime(time: LocalTime): String {
+            val formatter = DateTimeFormatter.ofPattern("HH:mm")
+            return time.format(formatter)
+        }
+
         fun monthYearFromDate(date: LocalDate): String {
             val formatter = DateTimeFormatter.ofPattern("MMMM yyyy")
+            return date.format(formatter)
+        }
+
+        fun monthDayFromDate(date: LocalDate): String {
+            val formatter = DateTimeFormatter.ofPattern("MMMM d")
             return date.format(formatter)
         }
 

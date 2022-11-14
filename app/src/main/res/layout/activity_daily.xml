@@ -9,8 +9,7 @@
 
     <Button
         style="@style/standartButton"
-        android:onClick="dailyActivity"
-        android:text="Weekly" />
+        android:text="Daily" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +21,7 @@
 
         <Button
             style="@style/ButtonMonthStyle"
-            android:onClick="previousWeekAction"
+            android:onClick="prevDayAction"
             android:text="--" />
 
         <TextView
@@ -37,53 +36,19 @@
 
         <Button
             style="@style/ButtonMonthStyle"
-            android:onClick="nextWeekAction"
+            android:onClick="nextDayAction"
             android:text="--" />
 
     </LinearLayout>
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/dayOfWeekTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            style="@style/TextViewWeekly"
-            android:text="SUN" />
-
-        <TextView
-
-            style="@style/TextViewWeekly"
-            android:text="MON" />
-
-        <TextView
-            style="@style/TextViewWeekly"
-            android:text="TUE" />
-
-        <TextView
-
-            style="@style/TextViewWeekly"
-            android:text="WED" />
-
-        <TextView
-            style="@style/TextViewWeekly"
-            android:text="THUR" />
-
-        <TextView
-            style="@style/TextViewWeekly"
-            android:text="FRI" />
-
-        <TextView
-            style="@style/TextViewWeekly"
-            android:text="SAT" />
-
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/calendarRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="Monday"/>
 
     <Button
         style="@style/standartButton"
@@ -91,7 +56,7 @@
         android:onClick="newEventAction"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewEvent"
+        android:id="@+id/hourRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5" />

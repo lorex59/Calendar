@@ -23,5 +23,19 @@ data class Event(
 
             return events
         }
+
+        fun eventsForDateAndTime(date: LocalDate, time: LocalTime): ArrayList<Event> {
+            var events = ArrayList<Event>()
+
+            for (event in eventsList) {
+                var eventHour = event.time.hour
+                var cellHour = time.hour
+                if(event.date.equals(date) && eventHour == cellHour){
+                    events.add(event)
+                }
+            }
+
+            return events
+        }
     }
 }

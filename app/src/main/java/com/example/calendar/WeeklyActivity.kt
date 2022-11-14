@@ -1,9 +1,11 @@
 package com.example.calendar
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calendar.databinding.ActivityWeeklyBinding
 import java.time.LocalDate
 
@@ -20,13 +22,20 @@ class WeeklyActivity : AppCompatActivity(), CalendarAdapter.OnItemListener {
         setWeekView()
     }
 
+    fun newEventAction(view: View) {
+        startActivity(Intent(this, EventEditActivity::class.java))
+    }
+
     override fun onResume() {
         super.onResume()
         setEventAdapter()
     }
 
     fun setEventAdapter() {
-
+        val dailyEvents = CalendarUtils.selectedDate?.let { Event.eventsForDate(it) }
+        val adapter = dailyEvents?.let { EventAdapter(it) }
+        binding.recyclerViewEvent.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewEvent.adapter = adapter
     }
 
     private fun setWeekView() {
@@ -60,4 +69,11 @@ class WeeklyActivity : AppCompatActivity(), CalendarAdapter.OnItemListener {
         CalendarUtils.selectedDate = date
         setWeekView()
     }
+
+    fun dailyActivity(view: View) {
+        startActivity(Intent(this, DailyActivity::class.java))
+    }
+
+    fun prevDayAction(view: View) {}
+    fun nextDayAction(view: View) {}
 }
